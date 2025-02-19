@@ -1,16 +1,16 @@
 "use client";
 
 import { useState } from "react";
-// import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 export default function RandomNumber() {
-  // const router = useRouter();
+  const router = useRouter();
   const [number, setNumber] = useState(null);
 
   const handleRandomNumber = () => {
     const randomNumber = Math.floor(Math.random() * 3) + 1;
     setNumber(randomNumber);
-    // router.push(`/random-home/${randomNumber}`);
+    router.push(`/main/${randomNumber}`);
   };
 
   return (
@@ -18,7 +18,7 @@ export default function RandomNumber() {
       <button onClick={handleRandomNumber} className="border border-black">
         Generate Random Image
       </button>
-      <p>Random Number: {number}</p>
+      {/* <p>Random Number: {number}</p> */}
     </div>
   );
 }
