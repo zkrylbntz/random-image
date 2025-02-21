@@ -2,6 +2,7 @@ import RandomNumber from "@/components/RandomNumber";
 
 import Image from "next/image";
 import { db } from "@/utils/dbConnection";
+import NavBar from "@/components/NavBar";
 
 export default async function Main({ params }) {
   // const { randomNumber } = params;
@@ -12,6 +13,7 @@ export default async function Main({ params }) {
 
   return (
     <>
+      <NavBar />
       {/* {wrangledImages.map((image) => (
         <div key={image.id}> */}
       <div className="parent">
@@ -25,7 +27,6 @@ export default async function Main({ params }) {
                 height={200}
               /> */}
           <RandomNumber />
-          <h1>Previously posted photographs</h1>
         </div>
       </div>
       {/* </div>
