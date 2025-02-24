@@ -1,29 +1,23 @@
-import { db } from "@/utils/dbConnection";
+"use client";
 
-export default async function handleSaveToPosted({
-  image_id,
-  image,
-  location,
-  date,
-}) {
-  //   const { id } = await params;
-  //   const { image_id } = await params;
-  //   const { image } = await params;
-  //   const { location } = await params;
-  //   const { date } = await params;
+export default function SaveToPosted({ image_id, image, location, date }) {
+  const handleSaveToPosted = async () => {
+    await db.query(
+      `INSERT INTO posted (image_id, image, location, date) VALUES ($1, $2, $3, $4)`,
+      [image_id, image, location, date]
+    );
 
-  await db.query(
-    `INSERT INTO posted (image_id, image, location, date) VALUES ($1, $2, $3, $4)`,
-    [image_id, image, location, date]
-  );
-
-  return (
-    <>
-      <div>
-        <button onClick={handleSaveToPosted} className="border border-black">
-          Save this image as posted
-        </button>
-      </div>
-    </>
-  );
+    return (
+      <>
+        <div>
+          <button
+            // onClick={handleSaveToPosted}
+            className="border border-blue-500 px-4 py-2"
+          >
+            Save this image as posted
+          </button>
+        </div>
+      </>
+    );
+  };
 }
