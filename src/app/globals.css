@@ -27,7 +27,6 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  /* background-color: aqua; */
 }
 
 .child {
@@ -36,5 +35,4 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  /* background-color: bisque; */
 }

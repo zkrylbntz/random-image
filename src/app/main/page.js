@@ -10,6 +10,7 @@ export default async function Main({ params }) {
         <div className="child">
           <h1>What image will it be today then?</h1>
           <RandomNumber />
+          <h2>Care to filter?</h2>
         </div>
       </div>
     </>

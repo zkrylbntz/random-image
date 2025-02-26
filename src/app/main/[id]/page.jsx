@@ -1,14 +1,13 @@
 import Image from "next/image";
 import { db } from "@/utils/dbConnection";
 import NavBar from "@/components/NavBar";
-// import SaveToPosted from "@/components/SaveToPosted";
+import Link from "next/link";
+import RandomNumber from "@/components/RandomNumber";
 
 export default async function ImagePage({ params }) {
   const { id } = await params;
   const images = await db.query(`SELECT * FROM images WHERE id = $1`, [id]);
   const wrangledImages = images.rows;
-
-  // console.log("wrangledImages:", wrangledImages);
 
   async function handleSaveToPosted(formData) {
     "use server";
@@ -31,6 +30,8 @@ export default async function ImagePage({ params }) {
         <div className="child">
           {wrangledImages.map((image) => (
             <div key={image.id}>
+              <RandomNumber />
+              {/* <Link href={`/main`}>Try again?</Link> */}
               <Image
                 className="border border-black p-2.5 hover:scale-110"
                 src={image.image}
@@ -40,17 +41,10 @@ export default async function ImagePage({ params }) {
               />
               <p>{image.location}</p>
               <p>{image.date}</p>
-              {/* <SaveToPosted
-                image_id={image.id}
-                image={image.image}
-                location={image.location}
-                date={image.date}
-                // handleSaveToPosted={handleSaveToPosted}
-              /> */}
               <form action={handleSaveToPosted}>
                 <label htmlFor="image_id"></label>
                 <input
-                  // type="hidden"
+                  type="hidden"
                   name="image_id"
                   id="image_id"
                   defaultValue={image.id}
@@ -58,7 +52,7 @@ export default async function ImagePage({ params }) {
                 />
                 <label htmlFor="image"></label>
                 <input
-                  // type="hidden"
+                  type="hidden"
                   name="image"
                   id="image"
                   defaultValue={image.image}
@@ -66,7 +60,7 @@ export default async function ImagePage({ params }) {
                 />
                 <label htmlFor="location"></label>
                 <input
-                  // type="hidden"
+                  type="hidden"
                   name="location"
                   id="location"
                   defaultValue={image.location}
@@ -74,13 +68,15 @@ export default async function ImagePage({ params }) {
                 />
                 <label htmlFor="date"></label>
                 <input
-                  // type="hidden"
+                  type="hidden"
                   name="date"
                   id="date"
                   defaultValue={image.date}
                   required
                 />
-                <button type="submit">Save to posted</button>
+                <button className="border border-red-500" type="submit">
+                  Save to posted
+                </button>
               </form>
             </div>
           ))}
