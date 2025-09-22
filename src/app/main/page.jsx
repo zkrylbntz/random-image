@@ -8,7 +8,7 @@ export default async function Main({ params }) {
       <NavBar />
       <div className="parent">
         <div className="child">
-          <h1>What image will it be today then?</h1>
+          <h1> What image will it be today then?</h1>
           <RandomNumber />
           <h2>Care to filter?</h2>
         </div>
