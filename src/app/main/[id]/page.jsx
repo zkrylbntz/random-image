@@ -3,6 +3,7 @@ import { db } from "@/utils/dbConnection";
 import NavBar from "@/components/NavBar";
 import Link from "next/link";
 import RandomNumber from "@/components/RandomNumber";
+import { redirect } from "next/navigation";
 
 export default async function ImagePage({ params }) {
   const { id } = await params;
@@ -24,6 +25,8 @@ export default async function ImagePage({ params }) {
       `INSERT INTO posted (image_id, src, location, date, orientation, film_type, subject) VALUES ($1, $2, $3, $4, $5, $6, $7)`,
       [image_id, src, location, date, orientation, film_type, subject]
     );
+
+    redirect(`/posted`);
   }
 
   return (
