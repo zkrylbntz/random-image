@@ -8,6 +8,9 @@ export default function NavBar() {
       <Link className="flex justify-center" href={`/main`}>
         Main
       </Link>
+      <Link className="flex justify-center" href={`/posted`}>
+        Posted
+      </Link>
       {/* </div>
       </div> */}
     </>

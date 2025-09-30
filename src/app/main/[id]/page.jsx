@@ -7,7 +7,30 @@ import { redirect } from "next/navigation";
 
 export default async function ImagePage({ params }) {
   const { id } = await params;
-  const images = await db.query(`SELECT * FROM image WHERE id = $1`, [id]);
+
+  // const images = await db.query(`SELECT * FROM image WHERE id = $1 except FROM posted`, [id]);
+  // const images = await db.query(
+  //   `SELECT * from image i WHERE i.id = $1 AND NOT EXISTS (SELECT 1 FROM posted p WHERE p.image_id = i.id)) OR (i.id <> $1 AND NOT EXISTS ( SELECT 1 FROM posted p WHERE p.image_id = i.id))`,
+  //   [id]
+  // );
+
+  // const images = await db.query(
+  //   `SELECT * FROM image i WHERE NOT EXISTS (SELECT 1 FROM posted p WHERE p.image_id = i.id) OR (i.id <> $1 AND NOT EXISTS (SELECT 1 FROM posted p WHERE p.image_id = i.id)) ORDER BY (i.id = $1) DESC LIMIT 1`,
+  //   [id]
+  // );
+
+  const images = await db.query(
+    `SELECT *
+   FROM image i
+   WHERE NOT EXISTS (
+       SELECT 1 FROM posted p WHERE p.image_id = i.id
+   )
+   AND (i.id = $1 OR i.id <> $1)
+   ORDER BY (i.id = $1) DESC
+   LIMIT 1`,
+    [id]
+  );
+
   const wrangledImages = images.rows;
 
   async function handleSaveToPosted(formData) {

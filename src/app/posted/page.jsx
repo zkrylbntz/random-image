@@ -1,3 +1,4 @@
+import NavBar from "@/components/NavBar";
 import { db } from "@/utils/dbConnection";
 import Image from "next/image";
 
@@ -8,6 +9,8 @@ export default async function Posted(params) {
 
   return (
     <div>
+      <NavBar />
+
       <h1>Posted</h1>
       <div className="parent">
         <div className="child">

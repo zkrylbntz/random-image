@@ -8,7 +8,7 @@ export default function RandomNumber() {
   const [number, setNumber] = useState(null);
 
   const handleRandomNumber = () => {
-    const randomNumber = Math.floor(Math.random() * 3) + 1;
+    const randomNumber = Math.floor(Math.random() * 5) + 1;
     setNumber(randomNumber);
     router.push(`/main/${randomNumber}`);
   };
