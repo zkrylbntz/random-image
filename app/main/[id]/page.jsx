@@ -1,8 +1,8 @@
 import Image from "next/image";
-import { db } from "@/utils/dbConnection";
-import NavBar from "@/components/NavBar";
+import { db } from "../../../utils/dbConnection";
+import NavBar from "../../../components/NavBar";
 import Link from "next/link";
-import RandomNumber from "@/components/RandomNumber";
+import RandomNumber from "../../../components/RandomNumber";
 import { redirect } from "next/navigation";
 
 export default async function ImagePage({ params }) {

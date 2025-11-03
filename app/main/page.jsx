@@ -1,6 +1,6 @@
-import RandomNumber from "@/components/RandomNumber";
+import RandomNumber from "../../components/RandomNumber";
 
-import NavBar from "@/components/NavBar";
+import NavBar from "../../components/NavBar";
 
 export default async function Main({ params }) {
   return (

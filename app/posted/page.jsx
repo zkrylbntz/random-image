@@ -1,5 +1,5 @@
-import NavBar from "@/components/NavBar";
-import { db } from "@/utils/dbConnection";
+import NavBar from "../../components/NavBar";
+import { db } from "../../utils/dbConnection";
 import Image from "next/image";
 
 export default async function Posted(params) {
